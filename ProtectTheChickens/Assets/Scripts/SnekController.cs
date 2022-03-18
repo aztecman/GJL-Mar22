@@ -8,22 +8,37 @@ public class SnekController : MonoBehaviour
     public bool headOnTile;
     [SerializeField] GameObject tail;
     [SerializeField] float moveIncrement;
-    // Start is called before the first frame update
+    //NOTE: snek head transform.position is actually the position of the base of the skull ('neck-bone')
     void Start()
     {
         headOnTile = false;
         //MoveHead();
     }
 
-    void MoveHead(Vector3 moveDir) {
+    void MoveHead() {
+        //move head forward
         Vector3 prevPos = transform.position;
-        transform.position += moveDir * moveIncrement;
+        transform.position += transform.up * moveIncrement;
 
         //Move Body
         foreach (GameObject bodySeg in bodySegments) {
             prevPos = MoveBodySegment(bodySeg, prevPos);
         }
         headOnTile = !headOnTile;
+        CheckMouthForConsumable();
+    }
+
+    void CheckMouthForConsumable() {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.up*moveIncrement, .2f);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.CompareTag("Consumable"))
+            {
+                hitCollider.SendMessage("GetEaten");
+                Debug.Log("Yum!");
+                //TODO: show the player message: YUM, or BLEH
+            }
+        }
     }
 
     Vector3 MoveBodySegment(GameObject segment, Vector3 destination)
@@ -35,17 +50,17 @@ public class SnekController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
-            MoveHead(transform.up);
+        if (Input.GetKeyDown(KeyCode.Space)){
+            MoveHead();
         }
         if (headOnTile) {
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                MoveHead(transform.up);
+                MoveHead();
                 transform.Rotate(new Vector3(0, 0, 90));
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                MoveHead(transform.up);
+                MoveHead();
                 transform.Rotate(new Vector3(0, 0, -90));
             }
         }
