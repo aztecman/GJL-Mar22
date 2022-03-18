@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class LogicTests : MonoBehaviour
 {
-    bool[,] snakeCells;
+    bool[,] snakeCells; //cells occupied by snake
+    bool[,] arrayToFlood;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +17,10 @@ public class LogicTests : MonoBehaviour
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
-            {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
+            {false, false, false, false, true, true, true, true, true, false, false, false, false, false},
+            {false, false, false, false, true, false, false, false, true, false, false, false, false, false},
+            {false, false, false, false, true, false, false, false, true, false, false, false, false, false},
+            {false, false, false, false, true, true, true, true, true, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false},
@@ -27,27 +29,44 @@ public class LogicTests : MonoBehaviour
             {false, false, false, false, false, false, false, false, false, false, false, false, false, false}
         };
 
-        //add a snake to the boolean array
-        //TODO: add method based on floodfill algorithm
-        //TODO: test floodfill algorithm
+        //flood fill test: success!!
+        int trueCount = 0;
+        FloodArray(snakeCells);
+        for (int i = 0; i < arrayToFlood.GetLength(0); i++) {
+            for (int j = 0; j < arrayToFlood.GetLength(1); j++) {
+                if (arrayToFlood[i, j]) trueCount += 1;
+            }
+        }
+        Debug.Log("True Count: " + trueCount);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void FloodArray(bool[,] originalArray) {
+        arrayToFlood = originalArray.Clone() as bool[,];
+
+        FloodFill(new Vector2Int(0, 0));
     }
 
-    void GetFloodedArray(bool[,] arrayToFlood) {
-        /* [from wiki article: Flood_Fill]
-         Flood-fill (node):
- 1. If node is not Inside return.
- 2. Set the node
- 3. Perform Flood-fill one step to the south of node.
- 4. Perform Flood-fill one step to the north of node
- 5. Perform Flood-fill one step to the west of node
- 6. Perform Flood-fill one step to the east of node
- 7. Return.
-         */
+    void FloodFill(Vector2Int nodeIndex) {
+        //Debug.Log("flooding index: " + nodeIndex);
+        // [based on wiki article: Flood_Fill]
+
+        if (nodeIndex.x < 0 || nodeIndex.x >= arrayToFlood.GetLength(0) ||
+           nodeIndex.y < 0 || nodeIndex.y >= arrayToFlood.GetLength(1)) 
+        {
+            return; //if index out of bounds, return
+        }
+
+        if (arrayToFlood[nodeIndex.x, nodeIndex.y])
+        {
+            return; //if index is already filled, return
+        }
+        else {
+            arrayToFlood[nodeIndex.x, nodeIndex.y] = true; // 'fill' unfilled index
+        }
+
+        FloodFill(nodeIndex + Vector2Int.down);
+        FloodFill(nodeIndex + Vector2Int.up);
+        FloodFill(nodeIndex + Vector2Int.left);
+        FloodFill(nodeIndex + Vector2Int.right);
     }
 }
