@@ -3,7 +3,17 @@ guid: 2d581f4aaab0c7446a43b57e28f80b8b
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mFox
+    second: {fileID: 2100000, guid: 09989c3b4151b924fb17c8f767444cce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mFox1
+    second: {fileID: 2100000, guid: 09989c3b4151b924fb17c8f767444cce, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
