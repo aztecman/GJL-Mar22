@@ -76,6 +76,10 @@ public class SnekController : MonoBehaviour
         {
             if (hitCollider.CompareTag("Consumable"))
             {
+           
+                 FindObjectOfType<AudioManager>().Play("eating");
+                
+
                 Consumable consumableComponent = hitCollider.GetComponent<Consumable>();
                 int foodValue = consumableComponent.GetEaten();
 
@@ -102,6 +106,10 @@ public class SnekController : MonoBehaviour
         Debug.Log(Input.GetAxis("Horizontal"));
             if (Input.GetAxis("Horizontal") < -0.8f)
             {
+               if(!FindObjectOfType<AudioManager>().isPlaying("snakemove")){
+                 FindObjectOfType<AudioManager>().Play("snakemove");
+                }
+            //   
                 //MoveHead();
                 currentDirection = AimDirection.Left;
                 //transform.Rotate(new Vector3(0, 0, 90));
@@ -110,6 +118,11 @@ public class SnekController : MonoBehaviour
             {
                 //MoveHead();
                 currentDirection = AimDirection.Right;
+
+                if(!FindObjectOfType<AudioManager>().isPlaying("snakemove")){
+                 FindObjectOfType<AudioManager>().Play("snakemove");
+                }
+                
                 //transform.Rotate(new Vector3(0, 0, -90));
             }
     }

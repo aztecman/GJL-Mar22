@@ -12,7 +12,11 @@ public class Sound
 
     public bool loop;
 
+    [Range(0f,1f)]
+    public float spatialBlend;
 
+    [Range(0f,300f)]
+    public float spread;
     [Range(0f,1f)]
     public float volume;
     [Range(.1f, 3f)]
