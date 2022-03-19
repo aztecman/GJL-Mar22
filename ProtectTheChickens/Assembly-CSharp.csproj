@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\EggController.cs" />
     <Compile Include="Assets\Scripts\SnekController.cs" />
     <Compile Include="Assets\Scripts\LogicTests.cs" />
+    <Compile Include="Assets\Scripts\ChickenController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

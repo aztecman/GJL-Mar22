@@ -99,14 +99,14 @@ public class SnekController : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.Space)){
         //    MoveHead();
         //}
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+        Debug.Log(Input.GetAxis("Horizontal"));
+            if (Input.GetAxis("Horizontal") < -0.8f)
             {
                 //MoveHead();
                 currentDirection = AimDirection.Left;
                 //transform.Rotate(new Vector3(0, 0, 90));
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetAxis("Horizontal") > 0.8f)
             {
                 //MoveHead();
                 currentDirection = AimDirection.Right;
