@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public delegate void ActionStep();
+    public static ActionStep onStep;
+
+    [SerializeField] float secondsPerTick = 1f;
     void Start()
     {
-        
+        StartCoroutine(GameClock());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator GameClock()
     {
-        
+        while (true)
+        {
+            yield return new WaitForSeconds(secondsPerTick);
+            onStep?.Invoke();
+        }
+
     }
 }
