@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SnekController : MonoBehaviour
 {
-    public GameObject[] bodySegments;
+    public List<GameObject> bodySegments;
     public bool headOnTile;
     [SerializeField] GameObject tail;
     [SerializeField] float moveIncrement;
+    [SerializeField] GameObject bodySegmentPrefab;
+
+    public int fullness = 0;
     //NOTE: snek head transform.position is actually the position of the base of the skull ('neck-bone')
     void Start()
     {
@@ -16,13 +19,18 @@ public class SnekController : MonoBehaviour
     }
 
     void MoveHead() {
-        //move head forward
+        //Move Head forward
         Vector3 prevPos = transform.position;
         transform.position += transform.up * moveIncrement;
 
         //Move Body
         foreach (GameObject bodySeg in bodySegments) {
             prevPos = MoveBodySegment(bodySeg, prevPos);
+        }
+        if (fullness > 0) {
+            fullness -= 1;
+            GameObject newBodySegment = Instantiate(bodySegmentPrefab, prevPos, Quaternion.identity);
+            bodySegments.Add(newBodySegment);
         }
         headOnTile = !headOnTile;
         CheckMouthForConsumable();
@@ -34,8 +42,12 @@ public class SnekController : MonoBehaviour
         {
             if (hitCollider.CompareTag("Consumable"))
             {
-                hitCollider.SendMessage("GetEaten");
-                Debug.Log("Yum!");
+                Consumable consumableComponent = hitCollider.GetComponent<Consumable>();
+                int foodValue = consumableComponent.GetEaten();
+
+                fullness += foodValue;
+                //hitCollider.SendMessage("GetEaten");
+                Debug.Log("Yum! Value: " + foodValue);
                 //TODO: show the player message: YUM, or BLEH
             }
         }

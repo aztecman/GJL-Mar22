@@ -54,6 +54,8 @@ MonoBehaviour:
   headOnTile: 0
   tail: {fileID: 0}
   moveIncrement: 0.5
+  bodySegmentPrefab: {fileID: 1988891478438983238, guid: ab4168e7c735cd84a8a03f80636b297f, type: 3}
+  fullness: 0
 --- !u!1001 &6937669503452132040
 PrefabInstance:
   m_ObjectHideFlags: 0

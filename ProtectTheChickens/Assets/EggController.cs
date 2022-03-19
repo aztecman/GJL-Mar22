@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EggController : MonoBehaviour
+public class EggController : MonoBehaviour, Consumable
 {
+    int nutritionValue = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,8 @@ public class EggController : MonoBehaviour
 
     }
 
-    void GetEaten() {
+    public int GetEaten() {
         Destroy(gameObject);
+        return nutritionValue;
     }
 }

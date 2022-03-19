@@ -54,9 +54,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\EggController.cs" />
     <Compile Include="Assets\Scripts\SnekController.cs" />
     <Compile Include="Assets\LogicTests.cs" />
-    <Compile Include="Assets\EggController.cs" />
+    <Compile Include="Assets\Scripts\Consumable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
