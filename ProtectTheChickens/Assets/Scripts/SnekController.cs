@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class SnekController : MonoBehaviour
 {
+    public enum AimDirection {
+        Left,
+        Forward,
+        Right
+    }
     public List<GameObject> bodySegments;
     [SerializeField] GameObject tail;
     [SerializeField] float moveIncrement;
     [SerializeField] GameObject bodySegmentPrefab;
+    public AimDirection currentDirection;
     public bool headOnTile;
     public int fullness = 0;
     //NOTE: snek head transform.position is actually the position of the base of the skull ('neck-bone')
@@ -15,6 +21,7 @@ public class SnekController : MonoBehaviour
     {
         headOnTile = false;
         GameManager.onStep += MoveHead;
+        currentDirection = AimDirection.Forward;
         //MoveHead();
     }
 
@@ -46,6 +53,20 @@ public class SnekController : MonoBehaviour
 
         headOnTile = !headOnTile;
         CheckMouthForConsumable();
+
+        if (!headOnTile)
+        {
+            if (currentDirection == AimDirection.Left)
+            {
+                transform.Rotate(new Vector3(0, 0, 90));
+                currentDirection = AimDirection.Forward;
+            }
+            else if (currentDirection == AimDirection.Right)
+            {
+                transform.Rotate(new Vector3(0, 0, -90));
+                currentDirection = AimDirection.Forward;
+            }
+        }
     }
 
     void CheckMouthForConsumable()
@@ -78,18 +99,18 @@ public class SnekController : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.Space)){
         //    MoveHead();
         //}
-        if (headOnTile)
-        {
+
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                MoveHead();
-                transform.Rotate(new Vector3(0, 0, 90));
+                //MoveHead();
+                currentDirection = AimDirection.Left;
+                //transform.Rotate(new Vector3(0, 0, 90));
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                MoveHead();
-                transform.Rotate(new Vector3(0, 0, -90));
+                //MoveHead();
+                currentDirection = AimDirection.Right;
+                //transform.Rotate(new Vector3(0, 0, -90));
             }
-        }
     }
 }

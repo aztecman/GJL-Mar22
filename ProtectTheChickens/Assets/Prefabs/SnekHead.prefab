@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8614502936641128700}
   m_Layer: 0
   m_Name: SnekHead
-  m_TagString: Untagged
+  m_TagString: Snek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,10 +51,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  headOnTile: 0
   tail: {fileID: 0}
   moveIncrement: 0.5
   bodySegmentPrefab: {fileID: 1988891478438983238, guid: ab4168e7c735cd84a8a03f80636b297f, type: 3}
+  headOnTile: 0
   fullness: 0
 --- !u!1001 &6937669503452132040
 PrefabInstance:
