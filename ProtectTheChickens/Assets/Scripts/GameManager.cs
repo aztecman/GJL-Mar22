@@ -22,4 +22,13 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    IEnumerator GameClock() {
+        while (true)
+        {
+            yield return new WaitForSeconds(secondsPerTick);
+            onStep?.Invoke();
+        }
+
+    }
 }
