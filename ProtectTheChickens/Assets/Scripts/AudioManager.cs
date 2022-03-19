@@ -46,9 +46,11 @@ public class AudioManager : MonoBehaviour
         Debug.Log("Playing Audio");
         s.source.Play();
     }
+
     void Start(){
 
         Play("Theme");
     }
+    
 }
 // FindObjectOfType<AudioManager().Play("");
