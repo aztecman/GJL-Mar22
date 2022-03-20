@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(secondsPerTick);
             onStep?.Invoke();
+            yield return new WaitForFixedUpdate();
             lateStep?.Invoke();
         }
 
