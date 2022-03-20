@@ -10,9 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6699507503553041073}
   - component: {fileID: 8614502936641128700}
+  - component: {fileID: 1170604273}
+  - component: {fileID: 8239747527420936435}
+  - component: {fileID: 8956751052143724875}
   m_Layer: 0
   m_Name: SnekHead
-  m_TagString: Snek
+  m_TagString: SnekHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,6 +60,39 @@ MonoBehaviour:
   currentDirection: 1
   headOnTile: 0
   fullness: 0
+--- !u!81 &1170604273
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693803040227193239}
+  m_Enabled: 0
+--- !u!65 &8239747527420936435
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693803040227193239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56, y: 1, z: 0.48}
+  m_Center: {x: 0, y: 0.42, z: 0}
+--- !u!114 &8956751052143724875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693803040227193239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dd867ea65f96c48828ca185793f0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6937669503452132040
 PrefabInstance:
   m_ObjectHideFlags: 0

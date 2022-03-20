@@ -17,11 +17,13 @@ public class SnekController : MonoBehaviour
     public bool headOnTile;
     public int fullness = 0;
     GameManager gameManager;
+    Eater eater;
     //NOTE: snek head transform.position is actually the position of the base of the skull ('neck-bone')
     void Start()
     {
         headOnTile = false;
         gameManager = FindObjectOfType<GameManager>();
+        eater = GetComponent<Eater>();
         GameManager.onStep += MoveHead;
         currentDirection = AimDirection.Forward;
         //MoveHead();
@@ -64,7 +66,7 @@ public class SnekController : MonoBehaviour
         }
 
         headOnTile = !headOnTile;
-        CheckMouthForConsumable();
+        fullness += eater.GetConsumableFromMouth(transform.position + transform.up * moveIncrement, gameObject);
 
         if (!headOnTile)
         {
@@ -77,28 +79,6 @@ public class SnekController : MonoBehaviour
             {
                 transform.Rotate(new Vector3(0, 0, -90));
                 currentDirection = AimDirection.Forward;
-            }
-        }
-    }
-
-    void CheckMouthForConsumable()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.up * moveIncrement, .2f);
-        foreach (var hitCollider in hitColliders)
-        {
-            if (hitCollider.CompareTag("Consumable"))
-            {
-           
-                 FindObjectOfType<AudioManager>().Play("eating");
-                
-
-                Consumable consumableComponent = hitCollider.GetComponent<Consumable>();
-                int foodValue = consumableComponent.GetEaten();
-
-                fullness += foodValue;
-                //hitCollider.SendMessage("GetEaten");
-                Debug.Log("Yum! Value: " + foodValue);
-                //TODO: show the player message: YUM, or BLEH
             }
         }
     }
