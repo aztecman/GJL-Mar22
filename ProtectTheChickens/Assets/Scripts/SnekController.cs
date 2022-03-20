@@ -25,6 +25,7 @@ public class SnekController : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         eater = GetComponent<Eater>();
         GameManager.onStep += MoveHead;
+        GameManager.lateStep += TryEating;
         currentDirection = AimDirection.Forward;
         //MoveHead();
     }
@@ -66,7 +67,6 @@ public class SnekController : MonoBehaviour
         }
 
         headOnTile = !headOnTile;
-        fullness += eater.GetConsumableFromMouth(transform.position + transform.up * moveIncrement, gameObject);
 
         if (!headOnTile)
         {
@@ -81,6 +81,10 @@ public class SnekController : MonoBehaviour
                 currentDirection = AimDirection.Forward;
             }
         }
+    }
+
+    public void TryEating() {
+        fullness += eater.GetConsumableFromMouth(transform.position + transform.up * moveIncrement, gameObject);
     }
 
     Vector3 MoveBodySegment(GameObject segment, Vector3 destination)

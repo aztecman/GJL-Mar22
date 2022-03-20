@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3541833883024413678}
   m_Layer: 0
   m_Name: SnekTailSegment
-  m_TagString: Snek
+  m_TagString: SnekTail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fullness: 0
+  nutritionValue: 1
 --- !u!114 &2572146387719642824
 MonoBehaviour:
   m_ObjectHideFlags: 0

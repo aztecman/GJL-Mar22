@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public delegate void ActionStep();
-    public static ActionStep onStep;
+    public static ActionStep onStep, lateStep;
 
     [SerializeField] float secondsPerTick = 1f;
     [SerializeField] GameObject playerDeathPanel;
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(secondsPerTick);
             onStep?.Invoke();
+            lateStep?.Invoke();
         }
 
     }
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame() {
         onStep = null;
+        lateStep = null;
         SceneManager.LoadScene(0);
     }
 }

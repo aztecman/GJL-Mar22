@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2240220143435157825}
+  - {fileID: 2240220142245271927}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,7 +46,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 0.5, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1558440051727470304
 MonoBehaviour:
@@ -63,6 +64,10 @@ MonoBehaviour:
   layingPosition: {x: 0, y: 0, z: 0}
   nutritionValue: 1
   eggLayChance: 0
+  growChance: 0
+  largeModel: {fileID: 1467343301988371451}
+  smallModel: {fileID: 1467343301064786893}
+  isGrown: 0
 --- !u!114 &590108238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,10 +136,90 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenModel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d96c32d51916a1d4b9a4abd3514139a6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d96c32d51916a1d4b9a4abd3514139a6, type: 3}
+--- !u!1 &1467343301988371451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d96c32d51916a1d4b9a4abd3514139a6, type: 3}
+  m_PrefabInstance: {fileID: 1773403561030186666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2240220143435157825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d96c32d51916a1d4b9a4abd3514139a6, type: 3}
   m_PrefabInstance: {fileID: 1773403561030186666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1773403562253565596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1773403562731975920}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.13999999
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_Name
+      value: ChickModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+--- !u!1 &1467343301064786893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+  m_PrefabInstance: {fileID: 1773403562253565596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2240220142245271927 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24cbd29d734276740a9bcf22b80e4e38, type: 3}
+  m_PrefabInstance: {fileID: 1773403562253565596}
   m_PrefabAsset: {fileID: 0}

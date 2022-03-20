@@ -53,7 +53,10 @@
     <UnityVersion>2020.3.21f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Wanderer.cs" />
     <Compile Include="Assets\Scripts\ChickenController.cs" />
+    <Compile Include="Assets\Scripts\Eater.cs" />
+    <Compile Include="Assets\Scripts\FoxController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\EggController.cs" />
     <Compile Include="Assets\Scripts\Consumable.cs" />
@@ -61,9 +64,6 @@
     <Compile Include="Assets\Scripts\LogicTests.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
-    <Compile Include="Assets\Wanderer.cs" />
-    <Compile Include="Assets\FoxController.cs" />
-    <Compile Include="Assets\Eater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
