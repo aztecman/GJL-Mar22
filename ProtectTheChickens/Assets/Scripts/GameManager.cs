@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     }
     public void PlayerDeath() {
+        FindObjectOfType<AudioManager>().Play("Death");
         playerDeathPanel.SetActive(true);
         StopCoroutine(gameClock);
     }

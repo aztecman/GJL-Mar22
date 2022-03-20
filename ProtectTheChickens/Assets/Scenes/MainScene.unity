@@ -4723,6 +4723,14 @@ MonoBehaviour:
     volume: 0.576
     pitch: 2.16
     source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: fdf7d35230c9f48c9a36dc6beabdfea1, type: 3}
+    loop: 0
+    spatialBlend: 0
+    spread: 32
+    volume: 0.576
+    pitch: 1.55
+    source: {fileID: 0}
 --- !u!4 &767470017
 Transform:
   m_ObjectHideFlags: 0
