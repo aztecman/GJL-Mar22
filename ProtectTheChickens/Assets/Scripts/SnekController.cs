@@ -9,11 +9,18 @@ public class SnekController : MonoBehaviour
         Forward,
         Right
     }
+
+    public enum SnekMode {
+        ActiveControl,
+        Circling
+    }
+
     public List<GameObject> bodySegments;
     [SerializeField] GameObject tail;
     [SerializeField] float moveIncrement;
     [SerializeField] GameObject bodySegmentPrefab;
     public AimDirection currentDirection;
+    public SnekMode snekMode;
     public bool headOnTile;
     public int fullness = 0;
     GameManager gameManager;
@@ -27,11 +34,16 @@ public class SnekController : MonoBehaviour
         GameManager.onStep += MoveHead;
         GameManager.lateStep += TryEating;
         currentDirection = AimDirection.Forward;
+        snekMode = SnekMode.ActiveControl;
         //MoveHead();
     }
 
     public void MoveHead()
     {
+        if (snekMode == SnekMode.Circling) {
+            Vector3 tailDirection = tail.transform.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, tailDirection);
+        }
         //Move Head forward
         Vector3 prevPos = transform.position;
         transform.position += transform.up * moveIncrement;
@@ -68,7 +80,8 @@ public class SnekController : MonoBehaviour
 
         headOnTile = !headOnTile;
 
-        if (!headOnTile)
+        if (!headOnTile && 
+            snekMode == SnekMode.ActiveControl)
         {
             if (currentDirection == AimDirection.Left)
             {
@@ -81,10 +94,22 @@ public class SnekController : MonoBehaviour
                 currentDirection = AimDirection.Forward;
             }
         }
+
+        if (snekMode == SnekMode.Circling) //intentional redundancy
+        {
+            Vector3 tailDirection = tail.transform.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(Vector3.forward, tailDirection);
+        }
     }
 
     public void TryEating() {
-        fullness += eater.GetConsumableFromMouth(transform.position + transform.up * moveIncrement, gameObject);
+
+        int food =  eater.GetConsumableFromMouth(transform.position + transform.up * moveIncrement, gameObject);
+        if (gameManager.GetRemainingEggs() > 0)
+        {
+            fullness += food;
+            if (food > 0) gameManager.EatEgg();
+        }
     }
 
     Vector3 MoveBodySegment(GameObject segment, Vector3 destination)
@@ -96,31 +121,29 @@ public class SnekController : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space)){
-        //    MoveHead();
-        //}
-        //Debug.Log(Input.GetAxis("Horizontal"));
-        //if (Input.GetAxis("Horizontal") < -0.8f)
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (snekMode == SnekMode.ActiveControl)
         {
-            if (!FindObjectOfType<AudioManager>().isPlaying("snakemove"))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                FindObjectOfType<AudioManager>().Play("snakemove");
+                if (!FindObjectOfType<AudioManager>().isPlaying("snakemove"))
+                {
+                    FindObjectOfType<AudioManager>().Play("snakemove");
+                }
+
+                currentDirection = AimDirection.Left;
+
             }
-
-            currentDirection = AimDirection.Left;
-
-        }
-        //else if (Input.GetAxis("Horizontal") > 0.8f)
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (!FindObjectOfType<AudioManager>().isPlaying("snakemove"))
+            //else if (Input.GetAxis("Horizontal") > 0.8f)
+            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                FindObjectOfType<AudioManager>().Play("snakemove");
-            }
-            
-            currentDirection = AimDirection.Right;
+                if (!FindObjectOfType<AudioManager>().isPlaying("snakemove"))
+                {
+                    FindObjectOfType<AudioManager>().Play("snakemove");
+                }
 
+                currentDirection = AimDirection.Right;
+
+            }
         }
     }
 }

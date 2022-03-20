@@ -50,7 +50,9 @@ public class Eater : MonoBehaviour
                 }
                 if (hitCollider.CompareTag("SnekTail"))
                 {
-                    Debug.Log("Connection!");
+                    if (gameManager.GetRemainingEggs() == 0) {
+                        GetComponent<SnekController>().snekMode = SnekController.SnekMode.Circling;
+                    }
                 }
             }
         }

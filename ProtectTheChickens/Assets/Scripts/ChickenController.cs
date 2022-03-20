@@ -9,6 +9,7 @@ public class ChickenController : MonoBehaviour, Consumable
     [SerializeField] int nutritionValue;
     [SerializeField] float eggLayChance = 0.05f;
     [SerializeField] float growChance = 0;
+    [SerializeField] float actChange = 0.4f;
     [SerializeField] GameObject largeModel, smallModel;
     public bool isGrown = false;
     GameManager gameManager;
@@ -24,18 +25,24 @@ public class ChickenController : MonoBehaviour, Consumable
     public void PerformStep() {
         // TODO: with a small chance lay an egg.
         // wander
-        wanderer.Wander();
-        if (Random.value < eggLayChance && isGrown) {
-            LayEgg();
-        }
-        eggLayChance += 0.001f;
-        if (!isGrown) {
-            growChance += 0.001f;
-            if (Random.value < growChance) {
-                largeModel.SetActive(true);
-                smallModel.SetActive(false);
-                  FindObjectOfType<AudioManager>().Play("Chicken");
-                isGrown = true;
+        if (Random.value < actChange)
+        {
+            wanderer.Wander();
+            if (Random.value < eggLayChance && isGrown)
+            {
+                LayEgg();
+            }
+            eggLayChance += 0.001f;
+            if (!isGrown)
+            {
+                growChance += 0.001f;
+                if (Random.value < growChance)
+                {
+                    largeModel.SetActive(true);
+                    smallModel.SetActive(false);
+                    FindObjectOfType<AudioManager>().Play("Chicken");
+                    isGrown = true;
+                }
             }
         }
     }

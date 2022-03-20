@@ -65,6 +65,7 @@ MonoBehaviour:
   nutritionValue: 1
   eggLayChance: 0
   growChance: 0
+  actChange: 0.7
   largeModel: {fileID: 1467343301988371451}
   smallModel: {fileID: 1467343301064786893}
   isGrown: 0
