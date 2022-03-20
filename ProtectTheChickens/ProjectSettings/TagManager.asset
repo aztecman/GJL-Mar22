@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Consumable
   - Snek
+  - SnekHead
   layers:
   - Default
   - TransparentFX

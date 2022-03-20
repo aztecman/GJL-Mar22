@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,9 +9,14 @@ public class GameManager : MonoBehaviour
     public static ActionStep onStep;
 
     [SerializeField] float secondsPerTick = 1f;
+    [SerializeField] GameObject playerDeathPanel;
+    public float minX, maxX, minY, maxY;
+
+    Coroutine gameClock;
+
     void Start()
     {
-        StartCoroutine(GameClock());
+        gameClock = StartCoroutine(GameClock());
     }
 
     IEnumerator GameClock()
@@ -22,5 +28,13 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void PlayerDeath() {
+        playerDeathPanel.SetActive(true);
+        StopCoroutine(gameClock);
+    }
 
+    public void ResetGame() {
+        onStep = null;
+        SceneManager.LoadScene(0);
+    }
 }
