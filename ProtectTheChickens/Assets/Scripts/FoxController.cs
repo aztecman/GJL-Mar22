@@ -25,6 +25,7 @@ public class FoxController : MonoBehaviour, Consumable
 
     public void TryEating() {
         fullness += eater.GetConsumableFromMouth(transform.position, gameObject);
+        
     }
 
     public int GetEaten() {

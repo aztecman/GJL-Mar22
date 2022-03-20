@@ -16,21 +16,29 @@ public class EggController : MonoBehaviour, Consumable
 
     void AttemptHatch() {
         if (Random.value < eggHatchChance) {
+         
             Hatch();
+
+            
         }
         eggHatchChance += 0.001f;
     }
     void Hatch() {
         Instantiate(chickenPrefab, transform.position + hatchPosition, Quaternion.identity);
+           FindObjectOfType<AudioManager>().Play("Hatched");
+
         Die();
+       
     }
 
     public int GetEaten() {
         Die();
+           FindObjectOfType<AudioManager>().Play("Wolf");
         return nutritionValue;
     }
 
     void Die() {
+    
         Destroy(gameObject);
         GameManager.onStep -= AttemptHatch;
     }

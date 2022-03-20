@@ -34,6 +34,7 @@ public class ChickenController : MonoBehaviour, Consumable
             if (Random.value < growChance) {
                 largeModel.SetActive(true);
                 smallModel.SetActive(false);
+                  FindObjectOfType<AudioManager>().Play("Chicken");
                 isGrown = true;
             }
         }
@@ -42,6 +43,7 @@ public class ChickenController : MonoBehaviour, Consumable
     void LayEgg() {
         Instantiate(eggPrefab, transform.position + layingPosition, Quaternion.identity);
         eggLayChance = 0;
+          FindObjectOfType<AudioManager>().Play("Lay");
     }
 
     public int GetEaten() {

@@ -4672,7 +4672,7 @@ MonoBehaviour:
     loop: 1
     spatialBlend: 0
     spread: 0
-    volume: 0.5
+    volume: 0.162
     pitch: 1
     source: {fileID: 0}
   - name: snakemove
@@ -4684,28 +4684,44 @@ MonoBehaviour:
     pitch: 0.91
     source: {fileID: 0}
   - name: eating
-    clip: {fileID: 8300000, guid: ddc6d8921e8a94c6086f1d1c79efd8cb, type: 3}
+    clip: {fileID: 8300000, guid: c70450c3517a1450a9e15ac106b46407, type: 3}
     loop: 0
     spatialBlend: 0
     spread: 0
-    volume: 0.58
-    pitch: 1.14
+    volume: 0.634
+    pitch: 1.99
     source: {fileID: 0}
   - name: Wolf
-    clip: {fileID: 8300000, guid: ddc6d8921e8a94c6086f1d1c79efd8cb, type: 3}
+    clip: {fileID: 8300000, guid: 80269b03f379646d296ff89aadc1fcee, type: 3}
     loop: 0
     spatialBlend: 1
-    spread: 116
-    volume: 0.58
-    pitch: 1.14
+    spread: 208
+    volume: 0.942
+    pitch: 1.38
     source: {fileID: 0}
   - name: Chicken
-    clip: {fileID: 8300000, guid: ddc6d8921e8a94c6086f1d1c79efd8cb, type: 3}
+    clip: {fileID: 8300000, guid: ca20a6146052e4ab8b09ecfbdc197bba, type: 3}
     loop: 0
-    spatialBlend: 1
-    spread: 122
-    volume: 0.58
+    spatialBlend: 0.788
+    spread: 300
+    volume: 0.735
     pitch: 1.14
+    source: {fileID: 0}
+  - name: Hatched
+    clip: {fileID: 8300000, guid: fe5bb1997daff409987759e418f7a16f, type: 3}
+    loop: 0
+    spatialBlend: 0.74
+    spread: 300
+    volume: 0.807
+    pitch: 2.02
+    source: {fileID: 0}
+  - name: Lay
+    clip: {fileID: 8300000, guid: b38a659243ab1458eac7a296910b0807, type: 3}
+    loop: 0
+    spatialBlend: 0
+    spread: 32
+    volume: 0.576
+    pitch: 2.16
     source: {fileID: 0}
 --- !u!4 &767470017
 Transform:
