@@ -38,16 +38,16 @@ public class LogicTests : MonoBehaviour
         //};
 
         //flood fill test: success!!
-        int trueCount = 0;
-        FloodArray(snekCells);
-        for (int i = 0; i < floodArr.GetLength(0); i++)
-        {
-            for (int j = 0; j < floodArr.GetLength(1); j++)
-            {
-                if (floodArr[i, j]) trueCount += 1;
-            }
-        }
-        Debug.Log("True Count: " + trueCount);
+        //int trueCount = 0;
+        //FloodArray(snekCells);
+        //for (int i = 0; i < floodArr.GetLength(0); i++)
+        //{
+        //    for (int j = 0; j < floodArr.GetLength(1); j++)
+        //    {
+        //        if (floodArr[i, j]) trueCount += 1;
+        //    }
+        //}
+        //Debug.Log("True Count: " + trueCount);
     }
 
     void FloodArray(bool[,] originalArray)
@@ -111,8 +111,10 @@ public class LogicTests : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(new Vector3(col - 6.5f, 6.5f - row), 0.2f);
         foreach (var hitCollider in hitColliders)
         {
+            Debug.Log(col + ", " + row + " contains: " + hitCollider.tag);
             if (hitCollider.tag.Contains("Snek"))
             {
+                Debug.Log(col + ", " + row + " contains snek");
                 return true;
             }
         }

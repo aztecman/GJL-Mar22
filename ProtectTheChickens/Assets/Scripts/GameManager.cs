@@ -71,9 +71,13 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < loopedCells.GetLength(0); j++)
             {
-                if (CellHasChicken(i, j)) chickenCount += 1;
+                if (loopedCells[i, j])
+                {
+                    if (CellHasChicken(i, j)) chickenCount += 1;
+                }
             }
         }
+        Debug.Log("Chicken Count: " + chickenCount);
         if (chickenCount > 0)
         {
             uiManager.UpdateMission(2, "You Win!");
