@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Wanderer.cs" />
     <Compile Include="Assets\Scripts\ChickenController.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Eater.cs" />
     <Compile Include="Assets\Scripts\FoxController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="Assets\Scripts\LogicTests.cs" />
     <Compile Include="Assets\Scripts\Sound.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
-    <Compile Include="Assets\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

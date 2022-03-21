@@ -52,6 +52,8 @@ public class Eater : MonoBehaviour
                 {
                     if (gameManager.GetRemainingEggs() == 0) {
                         GetComponent<SnekController>().snekMode = SnekController.SnekMode.Circling;
+                        Debug.Log("1/");
+                        gameManager.EndGame();
                     }
                 }
             }
