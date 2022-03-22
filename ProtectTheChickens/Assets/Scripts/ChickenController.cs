@@ -28,7 +28,9 @@ public class ChickenController : MonoBehaviour, Consumable
         if (Random.value < actChange)
         {
             wanderer.Wander();
-            if (Random.value < eggLayChance && isGrown)
+            if (Random.value < eggLayChance && 
+                isGrown &&
+                !gameManager.gameHasEnded)
             {
                 LayEgg();
             }

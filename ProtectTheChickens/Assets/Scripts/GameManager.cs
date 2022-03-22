@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     public int eggsEaten = 0;
     public int currentStage = 0;
     public float minX, maxX, minY, maxY;
+    public bool gameHasEnded;
+    bool playerWon;
     Coroutine gameClock;
     UIManager uiManager;
     LogicTests logicTests;
 
     void Start()
     {
+        gameHasEnded = false;
+        playerWon = false;
         gameClock = StartCoroutine(GameClock());
         uiManager = FindObjectOfType<UIManager>();
         logicTests = FindObjectOfType<LogicTests>();
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        gameHasEnded = true;
         Debug.Log("2/");
         int chickenCount = 0;
         bool[,] loopedCells = logicTests.GetLoopedCells();
@@ -78,13 +83,18 @@ public class GameManager : MonoBehaviour
             }
         }
         Debug.Log("Chicken Count: " + chickenCount);
-        if (chickenCount > 0)
+        if (chickenCount > 0 || playerWon) //note: playerWon exists to prevent flickering from occasional miscounting
         {
-            uiManager.UpdateMission(2, "You Win!");
+            uiManager.UpdateMission(1, "- Success!");
+            uiManager.UpdateMission(2, "You Saved a Chicken!");
+            uiManager.ShowPlayAgainBtn();
+            playerWon = true;
         }
         else
         {
+            uiManager.UpdateMission(1, "- Almost...");
             uiManager.UpdateMission(2, "No chickens\nwere harmed\nin the making\nof this game");
+            uiManager.ShowPlayAgainBtn();
         }
     }
 

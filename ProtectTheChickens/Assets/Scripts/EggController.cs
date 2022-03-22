@@ -8,27 +8,25 @@ public class EggController : MonoBehaviour, Consumable
     [SerializeField] float eggHatchChance = 0.01f;
     [SerializeField] GameObject chickenPrefab;
     [SerializeField] Vector3 hatchPosition;
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         GameManager.onStep += AttemptHatch;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void AttemptHatch() {
-        if (Random.value < eggHatchChance) {
-         
+        if (Random.value < eggHatchChance)
+        {
             Hatch();
-
-            
         }
         eggHatchChance += 0.001f;
     }
     void Hatch() {
         Instantiate(chickenPrefab, transform.position + hatchPosition, Quaternion.identity);
            FindObjectOfType<AudioManager>().Play("Hatched");
-
         Die();
-       
     }
 
     public int GetEaten() {
