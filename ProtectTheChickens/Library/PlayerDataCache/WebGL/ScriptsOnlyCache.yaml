@@ -236,7 +236,7 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: e759548af7f43db7f80f2565d66c3624
+      Hash: 80c104cbe71ab9bbe9466c66db0565fb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -266,7 +266,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: d6a3077189c866813d6a93aac7c21905
+      Hash: d1d07d4f65f40bc7f775c2400b1dce46
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -615,4 +615,4 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/Carson Bentley/Documents/Github_backup/GJL-Mar22/ProtectTheChickens/Build2
+  playerPath: C:/Users/Carson Bentley/Documents/Github_backup/GJL-Mar22 Build3
