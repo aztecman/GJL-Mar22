@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: mSnek
-    second: {fileID: 2100000, guid: 7275614f698ee9649b4bed0375b253d9, type: 2}
+    second: {fileID: 2100000, guid: 653eadc46d307d74785d2f15cd8c10a1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
