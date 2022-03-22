@@ -3,7 +3,12 @@ guid: 572de1a58c2d7c24884f4dff8ccf728c
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mSnek
+    second: {fileID: 2100000, guid: 653eadc46d307d74785d2f15cd8c10a1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
