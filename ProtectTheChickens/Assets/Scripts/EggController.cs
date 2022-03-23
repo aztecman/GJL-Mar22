@@ -17,7 +17,8 @@ public class EggController : MonoBehaviour, Consumable
     }
 
     void AttemptHatch() {
-        if (Random.value < eggHatchChance)
+        if (Random.value < eggHatchChance &&
+            !gameManager.gameHasEnded)
         {
             Hatch();
         }

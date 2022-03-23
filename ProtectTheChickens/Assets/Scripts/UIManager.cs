@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject playerDeathPanel;
     [SerializeField] TextMesh[] missions;
     [SerializeField] GameObject playAgainBtnObj;
+    [SerializeField] GameObject controlsHintObj;
     // Start is called before the first frame update
     public void ShowDeathPanel(bool show = true) {
         playerDeathPanel.SetActive(show);
@@ -18,5 +19,9 @@ public class UIManager : MonoBehaviour
     }
     public void ShowPlayAgainBtn(bool show = true) {
         playAgainBtnObj.SetActive(show);
+    }
+    public void ShowControlsHint(bool show = true)
+    {
+        controlsHintObj.SetActive(show);
     }
 }

@@ -130,6 +130,7 @@ public class SnekController : MonoBehaviour
                     FindObjectOfType<AudioManager>().Play("snakemove");
                 }
 
+                FindObjectOfType<UIManager>().ShowControlsHint(false);
                 currentDirection = AimDirection.Left;
 
             }
@@ -140,7 +141,7 @@ public class SnekController : MonoBehaviour
                 {
                     FindObjectOfType<AudioManager>().Play("snakemove");
                 }
-
+                FindObjectOfType<UIManager>().ShowControlsHint(false);
                 currentDirection = AimDirection.Right;
 
             }
